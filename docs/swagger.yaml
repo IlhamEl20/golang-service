@@ -1,0 +1,71 @@
+basePath: /
+host: localhost:5000
+info:
+  contact:
+    email: example@example.com
+    name: Muhamad Ilham
+  description: This is a simple API to generate and verify CAPTCHA using GoFiber and
+    dchest/captcha.
+  title: Fiber CAPTCHA API
+  version: "1.0"
+paths:
+  /get-captcha:
+    get:
+      description: Generate a new captcha and return the captcha ID and image
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Generate a new captcha
+      tags:
+      - Captcha
+  /verify-captcha:
+    post:
+      consumes:
+      - application/json
+      description: Verify the captcha solution for the given captcha ID
+      parameters:
+      - description: Captcha ID
+        in: body
+        name: captcha_id
+        required: true
+        schema:
+          type: string
+      - description: Captcha Solution
+        in: body
+        name: solution
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Verify a captcha
+      tags:
+      - Captcha
+schemes:
+- http
+swagger: "2.0"

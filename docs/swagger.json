@@ -1,0 +1,106 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a simple API to generate and verify CAPTCHA using GoFiber and dchest/captcha.",
+        "title": "Fiber CAPTCHA API",
+        "contact": {
+            "name": "Muhamad Ilham",
+            "email": "example@example.com"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "paths": {
+        "/get-captcha": {
+            "get": {
+                "description": "Generate a new captcha and return the captcha ID and image",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Captcha"
+                ],
+                "summary": "Generate a new captcha",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/verify-captcha": {
+            "post": {
+                "description": "Verify the captcha solution for the given captcha ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Captcha"
+                ],
+                "summary": "Verify a captcha",
+                "parameters": [
+                    {
+                        "description": "Captcha ID",
+                        "name": "captcha_id",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Captcha Solution",
+                        "name": "solution",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
