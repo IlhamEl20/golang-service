@@ -20,6 +20,12 @@ func Setup(app *fiber.App) {
 	app.Get("/api/kecamatan/:kecamatanID/kelurahan", controllers.GetKelurahansByKecamatan)
 
 	app.Post("/check-pdf", controllers.UploadPDF)
+	app.Post("/portect", controllers.UploadAndEncryptPDF)
+	app.Post("/mergePDF", controllers.MergePDF)
 	app.Get("/get-captcha", controllers.GetCaptchaHandler)
 	app.Post("/verify-captcha", controllers.VerifyCaptchaHandler)
+	//pdf
+	app.Post("/upload", controllers.UploadSinglePDF)
+	app.Get("/pdf/:filename", controllers.SendFile)
+	app.Post("/merge", controllers.MergePDFs)
 }

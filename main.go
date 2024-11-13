@@ -6,7 +6,6 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-	"github.com/gofiber/swagger"
 )
 
 // @title Fiber CAPTCHA API
@@ -34,6 +33,6 @@ func main() {
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
 	routes.Setup(app)
-	app.Get("/swagger/*", swagger.HandlerDefault) // default swagger
+	// app.Get("/swagger/*", swagger.HandlerDefault) // default swagger
 	log.Fatal(app.Listen(":5000"))
 }
