@@ -28,4 +28,8 @@ func Setup(app *fiber.App) {
 	app.Post("/upload", controllers.UploadSinglePDF)
 	app.Get("/pdf/:filename", controllers.SendFile)
 	app.Post("/merge", controllers.MergePDFs)
+	app.Post("/kompres", controllers.CompressPDF)
+	app.Post("/remove-annotation", controllers.RemoveAnnotationFromFile)
+	app.Post("/annotate-pdf", controllers.AddAnnotation)
+	app.Post("/watermark", controllers.CreateWatermark)
 }

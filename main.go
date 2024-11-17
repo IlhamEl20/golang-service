@@ -19,7 +19,6 @@ import (
 func main() {
 	// database.ConnectDB()
 	// err := database.DB.AutoMigrate(
-
 	// // 	&models.Product{})
 	// if err != nil {
 	// 	log.Fatalf("Error during migration: %v", err)
@@ -29,8 +28,10 @@ func main() {
 
 	app := fiber.New()
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "*", // Ganti dengan domain yang diizinkan
+		AllowOrigins: "*", // Ganti dengan domain frontend yang diizinkan
+		AllowMethods: "GET,POST,HEAD,PUT,DELETE,PATCH,OPTIONS",
 		AllowHeaders: "Origin, Content-Type, Accept",
+		// AllowCredentials: true, // If you need to send cookies or other credentials
 	}))
 	routes.Setup(app)
 	// app.Get("/swagger/*", swagger.HandlerDefault) // default swagger
