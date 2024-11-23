@@ -12,7 +12,10 @@ func Setup(app *fiber.App) {
 
 	// Define route to get cities by province
 	app.Get("/api/provinsi/:provinsiID/kota", controllers.GetKotasByProvinsi)
-
+// Define health check route
+	app.Get("/api/health", func(c *fiber.Ctx) error {
+		return c.SendString("I am live")
+	})
 	// Define route to get kecamatan by city
 	app.Get("/api/kota/:kotaID/kecamatan", controllers.GetKecamatansByKota)
 
