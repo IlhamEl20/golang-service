@@ -37,7 +37,7 @@
 // 	// app.Get("/swagger/*", swagger.HandlerDefault) // default swagger
 // 	log.Fatal(app.Listen(":5000"))
 // }
-package main
+package handler
 
 import (
 	"log"
